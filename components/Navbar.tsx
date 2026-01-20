@@ -29,11 +29,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
             <img 
               src={logoUrl} 
               alt="주식회사 도우텐트 로고" 
-              className="h-14 md:h-16 w-auto object-contain transition-transform hover:scale-105"
+              className="h-10 md:h-12 w-auto object-contain transition-transform hover:scale-105"
             />
           </div>
           
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <button
@@ -54,7 +53,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -72,7 +70,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-slate-100">
           <div className="px-6 py-8 space-y-4">

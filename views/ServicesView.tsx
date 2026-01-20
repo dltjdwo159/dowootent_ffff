@@ -7,7 +7,6 @@ interface ServicesViewProps {
 }
 
 const ServicesView: React.FC<ServicesViewProps> = ({ services }) => {
-  // 사용자가 이전에 제공한 이미지 URL들
   const serviceImages = [
     "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210617_202%2F1623915445291rh3Ii_JPEG%2Fypm-pX4uPK-qjoZZmjRnGraW.jpg",
     "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210617_234%2F1623915459562ddAd0_JPEG%2Fb3Ph-EqG6UCGvWGK_z7v_0DN.jpg",
@@ -18,16 +17,16 @@ const ServicesView: React.FC<ServicesViewProps> = ({ services }) => {
   return (
     <div className="bg-white">
       <div className="py-24 bg-[#003399] text-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">주요사업</h1>
           <div className="w-20 h-1.5 bg-white mb-6"></div>
           <p className="text-blue-100 text-lg md:text-xl font-light">도우텐트가 제안하는 독보적인 산업 설루션입니다.</p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-32 space-y-40">
+      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32 space-y-32 md:space-y-48">
         {services.map((service, idx) => (
-          <div key={service.id} className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-16 items-center`}>
+          <div key={service.id} className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 lg:gap-24 items-center`}>
             <div className="flex-1">
               <span className="text-blue-600 font-black text-sm tracking-[0.2em] mb-4 block uppercase">Expertise 0{idx + 1}</span>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-slate-900">{service.title}</h2>
@@ -43,45 +42,41 @@ const ServicesView: React.FC<ServicesViewProps> = ({ services }) => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {['KS인증 정품 자재 사용', '경제적인 시공 비용', '신속한 사후 관리', '현장 맞춤형 정밀 설계'].map((item, i) => (
-                  <div key={i} className="flex items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
+                  <div key={i} className="flex items-center p-4 bg-slate-50 rounded-xl border border-slate-100">
                     <span className="text-blue-600 mr-3 font-bold">✓</span>
                     <span className="text-sm font-semibold text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="flex-1 w-full aspect-[4/3] bg-slate-100 rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
+            <div className="flex-1 w-full aspect-[4/3] bg-slate-100 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative group border border-slate-100">
               <img 
                 src={serviceImages[idx % serviceImages.length]} 
                 alt={service.title} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+              <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* 추가 장점 섹션 */}
-      <div className="bg-slate-50 py-24">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-16">왜 도우텐트인가?</h2>
+      <div className="bg-slate-50 py-24 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-16 text-gray-900">왜 도우텐트인가?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-              <div className="text-4xl mb-6">🏗️</div>
-              <h4 className="text-xl font-bold mb-4">정밀 시공</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">수천 건의 시공 경험으로 축적된<br/>기술팀이 직접 책임 시공합니다.</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-6">🛡️</div>
-              <h4 className="text-xl font-bold mb-4">안전성 보장</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">강풍과 폭설에도 끄떡없는<br/>구조 계산 기반의 설계.</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-6">🤝</div>
-              <h4 className="text-xl font-bold mb-4">신속한 AS</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">문제 발생 시 즉시 대응하는<br/>철저한 고객 지원 시스템.</p>
-            </div>
+            {[
+              { icon: '🏗️', title: '정밀 시공', desc: '수천 건의 시공 경험으로 축적된\n기술팀이 직접 책임 시공합니다.' },
+              { icon: '🛡️', title: '안전성 보장', desc: '강풍과 폭설에도 끄떡없는\n구조 계산 기반의 설계.' },
+              { icon: '🤝', title: '신속한 AS', desc: '문제 발생 시 즉시 대응하는\n철저한 고객 지원 시스템.' }
+            ].map((v, i) => (
+              <div key={i} className="p-8 bg-white rounded-3xl shadow-sm border border-slate-200/60">
+                <div className="text-4xl mb-6">{v.icon}</div>
+                <h4 className="text-xl font-bold mb-4 text-gray-900">{v.title}</h4>
+                <p className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{v.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
