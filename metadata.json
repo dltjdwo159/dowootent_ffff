@@ -1,0 +1,7 @@
+{
+  "name": "Copy of 주식회사 도우텐트 공식 웹사이트",
+  "description": "대형천막, 창고천막, 철구조물 전문 기업 주식회사 도우텐트의 고품격 비즈니스 웹사이트 및 통합 관리자 시스템",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
